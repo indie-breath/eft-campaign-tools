@@ -43,13 +43,17 @@ def updateArmourVests():
             break
 
     A_PLATES_FRONT_NAMES = []
+    # for plate in global plates list
     for frontPlate in A_PLATES:
         tmp = False
+        # for plate that can fit in front slot
         for x in vestJSON["fits"][0]["fits"]:
+            # check if theres a plate that can fit there in the plates list
             tmp = x in frontPlate["fits"]
             if tmp:
                 break
 
+        # then adds to front plate list if there is one
         if tmp:
             A_PLATES_FRONT_NAMES.append(frontPlate["name"])
 
@@ -75,6 +79,7 @@ def updateArmourVests():
         if tmp:
             A_PLATES_SIDES_NAMES.append(sidePlate["name"])
 
+    # cleanliness, make sure that each list is not empty, but at least has a string
     if not A_PLATES_FRONT_NAMES:
         A_PLATES_FRONT_NAMES = [""]
     if not A_PLATES_BACK_NAMES:
@@ -82,10 +87,12 @@ def updateArmourVests():
     if not A_PLATES_SIDES_NAMES:
         A_PLATES_SIDES_NAMES = [""]
 
+    # updates all first choices for the plates
     armouredPlatesFrontClicked.set(A_PLATES_FRONT_NAMES[0])
     armouredPlatesBackClicked.set(A_PLATES_BACK_NAMES[0])
     armouredPlatesSidesClicked.set(A_PLATES_SIDES_NAMES[0])
 
+    # deletes then re-initialises all plate drop-downs
     armouredPlatesFrontDrop["menu"].delete(0, "end")
     for x in A_PLATES_FRONT_NAMES:
         armouredPlatesFrontDrop["menu"].add_command(
