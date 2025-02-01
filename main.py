@@ -10,7 +10,6 @@ def getArmourVests():
     with open("data/armourVests.json", "r") as file:
         for line in file:
             aVests.append(json.loads(line))
-    file.close()
 
     global aVestsNames
     aVestsNames = []
@@ -37,17 +36,14 @@ root.title("Testing")
 
 # put display inits here
 mainframe = ttk.Frame(root)
-mainframe["borderwidth"] = 2
-mainframe["relief"] = "sunken"
 mainframe.pack()
 
+# armoured vests drop-down menu
 armouredVestsClicked = StringVar()
 armouredVestsClicked.set(aVestsNames[0])
 
 armouredVestsDrop = OptionMenu(mainframe, armouredVestsClicked, *aVestsNames)
 armouredVestsDrop.pack()
-
-root.update()
 
 # starts loop
 root.mainloop()
