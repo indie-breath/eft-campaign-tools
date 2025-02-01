@@ -1,0 +1,2 @@
+{ "name": "Zhuk-3 Ballistic Plate", "size": 6, "hardness": 3, "max-dex-bonus": 0, "durability": 8, "location": "front", "fits": [ "BNTI", "6B" ], "other": "" }
+{ "name": "Zhuk-3 Ballistic Plate", "size": 6,  "hardness": 3, "max-dex-bonus": 0, "durability": 8, "location": "front", "fits": [ "BNTI", "6B" ], "other": "" }
