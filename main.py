@@ -1,6 +1,6 @@
 import json
 from tkinter import *
-from tkinter import ttk
+from tkinter import _setit, ttk
 
 # globals
 
@@ -86,11 +86,24 @@ def updateArmourVests():
     armouredPlatesBackClicked.set(A_PLATES_BACK_NAMES[0])
     armouredPlatesSidesClicked.set(A_PLATES_SIDES_NAMES[0])
 
-    armouredPlatesFrontDrop.update()
-    armouredPlatesBackDrop.update()
-    armouredPlatesSidesDrop.update()
+    armouredPlatesFrontDrop["menu"].delete(0, "end")
+    for x in A_PLATES_FRONT_NAMES:
+        armouredPlatesFrontDrop["menu"].add_command(
+            label=x, command=_setit(armouredPlatesFrontClicked, x)
+        )
+    armouredPlatesBackDrop["menu"].delete(0, "end")
+    for x in A_PLATES_BACK_NAMES:
+        armouredPlatesBackDrop["menu"].add_command(
+            label=x, command=_setit(armouredPlatesBackClicked, x)
+        )
+    armouredPlatesSidesDrop["menu"].delete(0, "end")
+    for x in A_PLATES_SIDES_NAMES:
+        armouredPlatesSidesDrop["menu"].add_command(
+            label=x, command=_setit(armouredPlatesSidesClicked, x)
+        )
 
     root.update()
+
 
 # inits main windows
 root = Tk()
